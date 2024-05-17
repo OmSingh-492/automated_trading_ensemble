@@ -2,7 +2,7 @@ import yfinance as yf
 import pandas as pd
 from datetime import datetime
 
-def file_creation(ticker, start_date="1990-01-01", end_date="2024-01-01"):
+def file_creation(ticker, start_date="1990-01-01", end_date="2020-05-01"):
     data = yf.download(ticker, start=start_date, end=end_date)
     data["Change"] = data["Close"].pct_change().dropna() * 100
     with open(f"./outputs/{ticker}.txt", "w") as file:
